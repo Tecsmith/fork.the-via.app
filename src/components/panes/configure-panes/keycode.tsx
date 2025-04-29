@@ -324,6 +324,14 @@ export const KeycodePane: FC = () => {
           </KeycodeList>
         );
       }
+      case 'mouse':
+      case 'audio': {
+        return (
+          <KeycodeList>
+            {keycodeListItems}
+          </KeycodeList>
+        );
+      }
       case 'custom': {
         if (
           (!isVIADefinitionV2(selectedDefinition) &&
