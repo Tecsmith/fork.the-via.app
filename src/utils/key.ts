@@ -74,12 +74,18 @@ export function getByteForCode(
   const byte: number | undefined = basicKeyToByte[code];
   if (byte !== undefined) {
     return byte;
+  } else if (isHexCode(code)) {
+    return Number(code)
   } else if (isLayerCode(code)) {
     return getByteForLayerCode(code, basicKeyToByte);
   } else if (advancedStringToKeycode(code, basicKeyToByte) !== null) {
     return advancedStringToKeycode(code, basicKeyToByte);
   }
   throw `Could not find byte for ${code}`;
+}
+
+function isHexCode(code: string) {
+  return code.startsWith('0x')
 }
 
 function isLayerCode(code: string) {
@@ -865,18 +871,12 @@ export function getKeycodes(numMacros = 16): IKeycodeMenu[] {
         {name: 'Refresh', code: 'KC_WWW_REFRESH'},
         {name: 'Favorites', code: 'KC_WWW_FAVORITES'},
         {name: 'Search', code: 'KC_WWW_SEARCH'},
-        {
-          name: 'Screen +',
-          code: 'KC_BRIU',
-          shortName: 'Scr +',
-          title: 'Screen Brightness Up',
-        },
-        {
-          name: 'Screen -',
-          code: 'KC_BRID',
-          shortName: 'Scr -',
-          title: 'Screen Brightness Down',
-        },
+        {name: 'Screen +', code: 'KC_BRIU', shortName: 'Scr +', title: 'Screen Brightness Up'},
+        {name: 'Screen -', code: 'KC_BRID', shortName: 'Scr -', title: 'Screen Brightness Down'},
+        {name: 'Control Panel', code: 'KC_CPNL', shortName: 'CtlPnl', title: 'Open Control Panel'},
+        {name: 'Assistant', code: 'KC_ASST', shortName: 'Asst', title: 'Launch Assistant'},
+        {name: 'Mission Control', code: 'KC_MCTL', shortName: 'Mctl', title: 'Open Mission Control'},
+        {name: 'Launchpad', code: 'KC_LPAD', shortName: 'Lpad', title: 'Open Launchpad'},
         {name: 'F13', code: 'KC_F13'},
         {name: 'F14', code: 'KC_F14'},
         {name: 'F15', code: 'KC_F15'},
@@ -970,22 +970,6 @@ export function getKeycodes(numMacros = 16): IKeycodeMenu[] {
       label: 'Custom',
       width: 'label',
       keycodes: [
-        {name: 'CUSTOM(0)', code: 'CUSTOM(0)', title: 'Custom Keycode 0'},
-        {name: 'CUSTOM(1)', code: 'CUSTOM(1)', title: 'Custom Keycode 1'},
-        {name: 'CUSTOM(2)', code: 'CUSTOM(2)', title: 'Custom Keycode 2'},
-        {name: 'CUSTOM(3)', code: 'CUSTOM(3)', title: 'Custom Keycode 3'},
-        {name: 'CUSTOM(4)', code: 'CUSTOM(4)', title: 'Custom Keycode 4'},
-        {name: 'CUSTOM(5)', code: 'CUSTOM(5)', title: 'Custom Keycode 5'},
-        {name: 'CUSTOM(6)', code: 'CUSTOM(6)', title: 'Custom Keycode 6'},
-        {name: 'CUSTOM(7)', code: 'CUSTOM(7)', title: 'Custom Keycode 7'},
-        {name: 'CUSTOM(8)', code: 'CUSTOM(8)', title: 'Custom Keycode 8'},
-        {name: 'CUSTOM(9)', code: 'CUSTOM(9)', title: 'Custom Keycode 9'},
-        {name: 'CUSTOM(10)', code: 'CUSTOM(10)', title: 'Custom Keycode 10'},
-        {name: 'CUSTOM(11)', code: 'CUSTOM(11)', title: 'Custom Keycode 11'},
-        {name: 'CUSTOM(12)', code: 'CUSTOM(12)', title: 'Custom Keycode 12'},
-        {name: 'CUSTOM(13)', code: 'CUSTOM(13)', title: 'Custom Keycode 13'},
-        {name: 'CUSTOM(14)', code: 'CUSTOM(14)', title: 'Custom Keycode 14'},
-        {name: 'CUSTOM(15)', code: 'CUSTOM(15)', title: 'Custom Keycode 15'},
       ],
     },
   ];
