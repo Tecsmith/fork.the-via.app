@@ -33,8 +33,7 @@ export const AccentRange: React.FC<
     return (
       <Container>
         <SliderInput {...props} value={value} onChange={handleChange} />
-        <NumberInput {...props} value={value} onChange={handleChange} />
+        <NumberInput {...props} type="number" value={value} onChange={handleChange} />
       </Container>
     );
   };
-  

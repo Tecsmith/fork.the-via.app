@@ -14,7 +14,7 @@ const ExternalLinkContainer = styled.span`
 
 export const ExternalLinks = () => (
   <ExternalLinkContainer>
-    <span class="not_a_link">
+    <span>
       <CategoryIconContainer>
         <VIALogo height="25px" fill="currentColor" />
         <CategoryMenuTooltip>A VIA project fork</CategoryMenuTooltip>
