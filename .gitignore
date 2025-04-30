@@ -7,5 +7,5 @@ public/definitions
 dist
 dist-ssr
 package-lock.json
+build-error.log
 __*
-
