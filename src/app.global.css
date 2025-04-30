@@ -113,10 +113,6 @@ html[data-theme-mode='light'] {
   flex-direction: column;
   height: 100%;
 }
-@font-face {
-  font-family: Symbola;
-  src: url(/fonts/Symbola.ttf) format('opentype');
-}
 
 @keyframes border-glow {
   0% {
