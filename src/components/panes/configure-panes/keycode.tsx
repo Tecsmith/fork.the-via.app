@@ -318,9 +318,11 @@ export const KeycodePane: FC = () => {
         );
       }
       case 'special': {
+        // {keycodeListItems.concat(renderCustomKeycode())} 
         return (
           <KeycodeList>
-            {keycodeListItems.concat(renderCustomKeycode())}
+            {renderCustomKeycode()} 
+            {keycodeListItems}
           </KeycodeList>
         );
       }

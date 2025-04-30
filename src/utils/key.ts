@@ -691,8 +691,15 @@ export function getKeycodes(numMacros = 16): IKeycodeMenu[] {
         {name: 'LA (', code: 'KC_LAPO', title: 'Left Alt when held, ( when tapped'},
         {name: 'RA )', code: 'KC_RAPC', title: 'Right Alt when held, ) when tapped'},
         {name: 'SftEnt', code: 'KC_SFTENT', title: 'Right Shift when held, Enter when tapped'},
-        {name: 'Reset', code: 'RESET', title: 'Reset the keyboard'},
-        {name: 'Debug', code: 'DEBUG', title: 'Toggle debug mode'},
+
+        // {name: 'Reset', code: 'RESET', title: 'Reset the keyboard'}, // old
+        // {name: 'Debug', code: 'DEBUG', title: 'Toggle debug mode'}, // old
+
+        {name: 'Boot-loader', code: 'QK_BOOT', title: 'Load into the bootloader'}, // new
+        {name: 'Reboot', code: 'QK_RBT', title: 'Reboot the keyboard'}, // new
+        {name: 'Debug', code: 'DB_TOGG', title: 'Toggle debug mode'}, // new
+        {name: 'Clear EEPROM', code: 'EE_CLR', title: 'Reset EEPROM to defaults'}, // new
+
         {name: 'Toggle NKRO', code: 'MAGIC_TOGGLE_NKRO', shortName: 'NKRO', title: 'Toggle NKRO'},
         // I don't even think the locking stuff is enabled...
         {name: 'Locking Num Lock', code: 'KC_LNUM'},
@@ -801,21 +808,35 @@ export function getKeycodes(numMacros = 16): IKeycodeMenu[] {
         {name: 'BL Toggle', code: 'BL_TOGG'},
         {name: 'BL On', code: 'BL_ON'},
         {name: 'BL Off', code: 'BL_OFF', shortName: 'BL Off'},
-        {name: 'BL -', code: 'BL_DEC'},
-        {name: 'BL +', code: 'BL_INC'},
+        {name: 'BL －', code: 'BL_DEC'},
+        {name: 'BL ＋', code: 'BL_INC'},
         {name: 'BL Cycle', code: 'BL_STEP'},
         {name: 'BR Toggle', code: 'BL_BRTG'},
-        {name: 'RGB Toggle', code: 'RGB_TOG'},
-        {name: 'RGB Mode -', code: 'RGB_RMOD'},
-        {name: 'RGB Mode +', code: 'RGB_MOD'},
-        {name: 'Hue -', code: 'RGB_HUD'},
-        {name: 'Hue +', code: 'RGB_HUI'},
-        {name: 'Sat -', code: 'RGB_SAD'},
-        {name: 'Sat +', code: 'RGB_SAI'},
-        {name: 'Bright -', code: 'RGB_VAD'},
-        {name: 'Bright +', code: 'RGB_VAI'},
-        {name: 'Effect Speed-', code: 'RGB_SPD'},
-        {name: 'Effect Speed+', code: 'RGB_SPI'},
+
+        // {name: 'RGB Toggle', code: 'RGB_TOG'}, // old
+        // {name: 'RGB Mode -', code: 'RGB_RMOD'}, // old
+        // {name: 'RGB Mode +', code: 'RGB_MOD'}, // old
+        // {name: 'Hue -', code: 'RGB_HUD'}, // old
+        // {name: 'Hue +', code: 'RGB_HUI'}, // old
+        // {name: 'Sat -', code: 'RGB_SAD'}, // old
+        // {name: 'Sat +', code: 'RGB_SAI'}, // old
+        // {name: 'Bright -', code: 'RGB_VAD'}, // old
+        // {name: 'Bright +', code: 'RGB_VAI'}, // old
+        // {name: 'Effect Speed-', code: 'RGB_SPD'}, // old
+        // {name: 'Effect Speed+', code: 'RGB_SPI'}, // old
+
+        {name: 'UG Toggle', shortName: 'RGB Toggle', code: 'UG_TOGG', title: 'QK_UNDERGLOW_TOGGLE'}, // new // FIXME : can like to better engwish
+        {name: 'UG Previous', shortName: 'RGB Mode -', code: 'UG_PREV', title: 'QK_UNDERGLOW_MODE_PREVIOUS'}, // new
+        {name: 'UG Next', shortName: 'RGB Mode +', code: 'UG_NEXT', title: 'QK_UNDERGLOW_MODE_NEXT'}, // new
+        {name: 'UG Hue －', shortName: 'Hue -', code: 'UG_HUED', title: 'QK_UNDERGLOW_HUE_DOWN'}, // new
+        {name: 'UG Hue ＋', shortName: 'Hue +', code: 'UG_HUEU', title: 'QK_UNDERGLOW_HUE_UP'}, // new
+        {name: 'UG Sat －', shortName: 'Sat -', code: 'UG_SATD', title: 'QK_UNDERGLOW_SATURATION_DOWN'}, // new
+        {name: 'UG Sat ＋', shortName: 'Sat +', code: 'UG_SATU', title: 'QK_UNDERGLOW_SATURATION_UP'}, // new
+        {name: 'UG Bright －', shortName: 'Bright -', code: 'UG_VALD', title: 'QK_UNDERGLOW_VALUE_DOWN'}, // new
+        {name: 'UG Bright ＋', shortName: 'Bright +', code: 'UG_VALU', title: 'QK_UNDERGLOW_VALUE_UP'}, // new
+        {name: 'UG Speed －', shortName: 'Speed -', code: 'UG_SPDD', title: 'QK_UNDERGLOW_SPEED_DOWN'}, // new
+        {name: 'UG Speed ＋', shortName: 'Speed +', code: 'UG_SPDU', title: 'QK_UNDERGLOW_SPEED_UP'}, // new
+
         {name: 'RGB Mode P', code: 'RGB_M_P', title: 'Plain'},
         {name: 'RGB Mode B', code: 'RGB_M_B', title: 'Breathe'},
         {name: 'RGB Mode R', code: 'RGB_M_R', title: 'Rainbow'},
@@ -824,6 +845,20 @@ export function getKeycodes(numMacros = 16): IKeycodeMenu[] {
         {name: 'RGB Mode K', code: 'RGB_M_K', title: 'Knight'},
         {name: 'RGB Mode X', code: 'RGB_M_X', title: 'Xmas'},
         {name: 'RGB Mode G', code: 'RGB_M_G', title: 'Gradient'},
+
+        {name: 'RM On', shortName: 'RGB On', code: 'RM_ON', title: 'QK_RGB_MATRIX_ON'}, // new // FIXME : yo do beter engrish
+        {name: 'RM Off', shortName: 'RGB Off', code: 'RM_OFF', title: 'QK_RGB_MATRIX_OFF'}, // new
+        {name: 'RM Toggle', shortName: 'RGB Toggle', code: 'RM_TOGG', title: 'QK_RGB_MATRIX_TOGGLE'}, // new
+        {name: 'RM Previous', shortName: 'RGB Mode -', code: 'RM_PREV', title: 'QK_RGB_MATRIX_MODE_PREVIOUS'}, // new
+        {name: 'RM Next', shortName: 'RGB Mode +', code: 'RM_NEXT', title: 'QK_RGB_MATRIX_MODE_NEXT'}, // new
+        {name: 'RM Hue －', shortName: 'Hue -', code: 'RM_HUED', title: 'QK_RGB_MATRIX_HUE_DOWN'}, // new
+        {name: 'RM Hue ＋', shortName: 'Hue +', code: 'RM_HUEU', title: 'QK_RGB_MATRIX_HUE_UP'}, // new
+        {name: 'RM Sat －', shortName: 'Sat -', code: 'RM_SATD', title: 'QK_RGB_MATRIX_SATURATION_DOWN'}, // new
+        {name: 'RM Sat ＋', shortName: 'Sat +', code: 'RM_SATU', title: 'QK_RGB_MATRIX_SATURATION_UP'}, // new
+        {name: 'RM Bright －', shortName: 'Bright -', code: 'RM_VALD', title: 'QK_RGB_MATRIX_VALUE_DOWN'}, // new
+        {name: 'RM Bright ＋', shortName: 'Bright +', code: 'RM_VALU', title: 'QK_RGB_MATRIX_VALUE_UP'}, // new
+        {name: 'RM Speed －', shortName: 'Speed -', code: 'RM_SPDD', title: 'QK_RGB_MATRIX_SPEED_DOWN'}, // new
+        {name: 'RM Speed ＋', shortName: 'Speed +', code: 'RM_SPDU', title: 'QK_RGB_MATRIX_SPEED_UP'}, // new
       ],
     },
     /*

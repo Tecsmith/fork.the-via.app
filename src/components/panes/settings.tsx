@@ -1,5 +1,5 @@
-import {useState} from 'react';
-import {Pane} from './pane';
+import { useState } from 'react';
+import { Pane } from './pane';
 import styled from 'styled-components';
 import {
   ControlRow,
@@ -11,9 +11,9 @@ import {
   IconContainer,
   SpanOverflowCell,
 } from './grid';
-import {AccentSlider} from '../inputs/accent-slider';
-import {useDispatch} from 'react-redux';
-import {useAppSelector} from 'src/store/hooks';
+import { AccentSlider } from '../inputs/accent-slider';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from 'src/store/hooks';
 import {
   getShowDesignTab,
   getDisableFastRemap,
@@ -26,15 +26,15 @@ import {
   getRenderMode,
   updateRenderMode,
 } from 'src/store/settingsSlice';
-import {AccentSelect} from '../inputs/accent-select';
-import {THEMES} from 'src/utils/themes';
-import {MenuContainer} from './configure-panes/custom/menu-generator';
-import {MenuTooltip} from '../inputs/tooltip';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faToolbox} from '@fortawesome/free-solid-svg-icons';
-import {getSelectedConnectedDevice} from 'src/store/devicesSlice';
-import {ErrorMessage} from '../styled';
-import {webGLIsAvailable} from 'src/utils/test-webgl';
+import { AccentSelect } from '../inputs/accent-select';
+import { THEMES } from 'src/utils/themes';
+import { MenuContainer } from './configure-panes/custom/menu-generator';
+import { MenuTooltip } from '../inputs/tooltip';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faToolbox } from '@fortawesome/free-solid-svg-icons';
+import { getSelectedConnectedDevice } from 'src/store/devicesSlice';
+import { ErrorMessage } from '../styled';
+import { webGLIsAvailable } from 'src/utils/test-webgl';
 
 const Container = styled.div`
   display: flex;
@@ -74,23 +74,23 @@ export const Settings = () => {
 
   const renderModeOptions = webGLIsAvailable
     ? [
-        {
-          label: '2D',
-          value: '2D',
-        },
-        {
-          label: '3D',
-          value: '3D',
-        },
-      ]
-    : [{label: '2D', value: '2D'}];
+      {
+        label: '2D',
+        value: '2D',
+      },
+      {
+        label: '3D',
+        value: '3D',
+      },
+    ]
+    : [{ label: '2D', value: '2D' }];
   const renderModeDefaultValue = renderModeOptions.find(
     (opt) => opt.value === renderMode,
   );
   return (
     <Pane>
-      <Grid style={{overflow: 'hidden'}}>
-        <MenuCell style={{pointerEvents: 'all', borderTop: 'none'}}>
+      <Grid style={{ overflow: 'hidden' }}>
+        <MenuCell style={{ pointerEvents: 'all', borderTop: 'none' }}>
           <MenuContainer>
             <Row $selected={true}>
               <IconContainer>
@@ -100,7 +100,7 @@ export const Settings = () => {
             </Row>
           </MenuContainer>
         </MenuCell>
-        <SpanOverflowCell style={{flex: 1, borderWidth: 0}}>
+        <SpanOverflowCell style={{ flex: 1, borderWidth: 0 }}>
           <Container>
             <ControlRow>
               <Label>Show Design tab</Label>
@@ -175,6 +175,21 @@ export const Settings = () => {
               <ControlRow>
                 <Label>VIA Firmware Protocol</Label>
                 <Detail>{selectedDevice.protocol}</Detail>
+              </ControlRow>
+              <ControlRow>
+                <Label>Product Name</Label>
+                <Detail>{selectedDevice.productName}</Detail>
+              </ControlRow>
+              <ControlRow>
+                <Label>USB ID (VID/PID)</Label>
+                <Detail>
+                {((selectedDevice.vendorId << 16) | selectedDevice.productId) >>> 0}
+                  {" ( "}
+                  {`0x${selectedDevice.vendorId.toString(16).padStart(4, '0').toLowerCase()}`}
+                  {" / "}
+                  {`0x${selectedDevice.productId.toString(16).padStart(4, '0').toLowerCase()}`}
+                  {" )"}
+                </Detail>
               </ControlRow>
             </DiagnosticContainer>
           ) : null}
