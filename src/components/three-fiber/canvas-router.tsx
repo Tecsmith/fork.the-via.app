@@ -73,7 +73,7 @@ export const CanvasRouter = () => {
 };
 
 const LazyRouter = React.lazy(async () => {
-  await document.fonts.load('bold 16px Fira Sans').finally();
+  await document.fonts.load('bold 16px').finally();
   return {default: NonSuspenseCanvasRouter};
 });
 

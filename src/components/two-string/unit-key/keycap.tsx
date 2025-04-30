@@ -65,8 +65,7 @@ const paintKeycapLabel = (
   canvas.style.height = `${canvasHeight}px`;
 
   context.scale(dpi, dpi);
-  const fontFamily =
-    'Fira Sans, Arial Rounded MT, Arial Rounded MT Bold, Arial';
+  const fontFamily = 'system-ui, sans-serif, "Noto Color Emoji"';
   // Margins from face edge to where text is drawn
   const topLabelMargin = {x: 4, y: 4};
   const bottomLabelMargin = {x: 4, y: 4};
@@ -192,7 +191,7 @@ export const Keycap: React.FC<TwoStringKeycapProps> = React.memo((props) => {
       canvasRef.current &&
       color &&
       label &&
-      (document.fonts.check('bold 16px "Fira Sans"', label.label) ||
+      (document.fonts.check('bold 16px system-ui', label.label) ||
         skipFontCheck)
     ) {
       // Only render label if it is available

@@ -25,7 +25,7 @@ const MenuContainer = styled.div`
   display: flex;
   color: #717070;
   padding: 24px;
-  font-family: GothamRounded;
+  font-family: system-ui, sans-serif, 'Noto Color Emoji';
   h3 {
     margin: 4px 0;
   }
